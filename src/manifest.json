@@ -1,16 +1,25 @@
 {
-    "name": "テクノロジア魔法学校 拡張機能",
-    "version": "1.1.0.0",
-    "version_name": "1.0.0",
-    "manifest_version": 3,
-    "description": "テクノロジア魔法学校をカスタマイズする拡張機能です",
-    "options_page": "options.html",
-    "content_scripts": [
-      {
-        "matches": ["https://player.technologia-schoolofmagic.jp/player/*"],
-        "js": ["content.js", "jquery-3.6.0.min.js"]
-      }
-    ],
-    "permissions": ["storage"]
+  "name": "[非公式]テクノロジア魔法学校 拡張機能",
+  "version": "1.1.1.0",
+  "version_name": "1.1.0",
+  "manifest_version": 3,
+  "description": "テクノロジア魔法学校をカスタマイズする拡張機能です",
+  "options_page": "options.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "https://player.technologia-schoolofmagic.jp/player/*"
+      ],
+      "js": [
+        "content.js",
+        "jquery-3.6.0.min.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
   }
-  
+}

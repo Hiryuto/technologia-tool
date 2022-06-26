@@ -10,7 +10,7 @@ We will update this page as soon as it is ready.
 
 # How to install (Chrome)
 
-Download the latest file from the release and enter `chrome://extensions/` in the URL field.
+[Download the latest file from the release](https://github.com/Hiryuto/technologia-tool/releases/latest) and enter `chrome://extensions/` in the URL field.
 ![](https://i.gyazo.com/76266e51270785f8d3ca8faf79e659bb.jpg)
 
 Enable "Developer Mode" in the upper right corner of the page.
@@ -42,7 +42,7 @@ This extension does not send any data to the server and all data is processed by
 
 # インストール方法 (Chrome)
 
-リリースより最新のファイルをダウンロードし、URL欄に「`chrome://extensions/`」を入力する
+[リリースより最新のファイルをダウンロード](https://github.com/Hiryuto/technologia-tool/releases/latest)し、URL欄に「`chrome://extensions/`」を入力する
 ![](https://i.gyazo.com/76266e51270785f8d3ca8faf79e659bb.jpg)
 
 ページに移動後右上にある「デベロッパーモード」を有効にする
@@ -54,5 +54,7 @@ This extension does not send any data to the server and all data is processed by
 ![](https://i.gyazo.com/10cc3d8b94a0621a3e8229b1761a402c.jpg)
 
 インストール完了！
+
 対象のタブを再読み込みすると適応されます。
+
 **導入後に必ず再読み込みしてください。**
