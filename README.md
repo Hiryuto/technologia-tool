@@ -3,14 +3,19 @@ Extension of technologia magic school
 
 # How to install (Chrome Web Store)
 
-The application is currently open to the public and awaiting review.
+**Install from outside Japan is not possible.**
 
-We will update this page as soon as it is ready.
+It can be installed from the following URL
+
+(It may take time to release the latest version due to review by Google.)
+
+[install URL](https://chrome.google.com/webstore/detail/%E9%9D%9E%E5%85%AC%E5%BC%8F%E3%83%86%E3%82%AF%E3%83%8E%E3%83%AD%E3%82%B8%E3%82%A2%E9%AD%94%E6%B3%95%E5%AD%A6%E6%A0%A1-%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD/hjpleokancbhjaoaedjbndipjlmlkehi)
 
 
 # How to install (Chrome)
 
 [Download the latest file from the release](https://github.com/Hiryuto/technologia-tool/releases/latest) and enter `chrome://extensions/` in the URL field.
+
 ![](https://i.gyazo.com/76266e51270785f8d3ca8faf79e659bb.jpg)
 
 Enable "Developer Mode" in the upper right corner of the page.
@@ -36,8 +41,11 @@ This extension does not send any data to the server and all data is processed by
 
 # インストール方法 (Chrome Web Store)
 
-現在、アプリケーションを公開し、審査待ちの状態です。
-準備が整い次第、このページを更新します。
+以下のURLよりインストールできます。
+
+(Googleによる審査があるため最新バージョンのリリースに時間がかかる場合があります)
+
+[インストールURL](https://chrome.google.com/webstore/detail/%E9%9D%9E%E5%85%AC%E5%BC%8F%E3%83%86%E3%82%AF%E3%83%8E%E3%83%AD%E3%82%B8%E3%82%A2%E9%AD%94%E6%B3%95%E5%AD%A6%E6%A0%A1-%E6%8B%A1%E5%BC%B5%E6%A9%9F%E8%83%BD/hjpleokancbhjaoaedjbndipjlmlkehi)
 
 
 # インストール方法 (Chrome)
