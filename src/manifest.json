@@ -27,6 +27,7 @@
     "128": "icon.png"
   },
   "action": {
+    "default_title": "ショートカットを開く",
     "default_popup": "popup.html"
   },
   "host_permissions": [
