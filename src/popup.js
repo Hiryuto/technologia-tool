@@ -1,6 +1,6 @@
 chrome.storage.local.get(["authorization"], async function (result) {
   authorization = result.authorization;
-  if (authorization == undefined) {
+  if (!authorization.match(/\S/g)) {
     return (document.getElementById("status").innerHTML =
       "<h1>認証コードが設定されていません。</h1>");
   }
