@@ -1,3 +1,4 @@
+var CharacterImgs;
 var href = location.href;
 var CharacterImgs;
 var observer = new MutationObserver(function (mutations) {
@@ -9,25 +10,26 @@ var observer = new MutationObserver(function (mutations) {
 
 observer.observe(document, { childList: true, subtree: true });
 
-function change(before_url, after_url) {
-  console.log("URL変更");
-  if (
-    $("canvas.unselectable").length &&
-    after_url.match(
-      /https:\/\/player.technologia-schoolofmagic.jp\/player\/step.*/
-    ) &&
-    !after_url.match(/.*step_label=lesson_cleared.*/)
-  ) {
-    console.log("画像データ取得開始");
-    chrome.storage.local.get(["CharacterImg"], function (value) {
-      CharacterImgs = value.CharacterImg;
-    });
-    setTimeout(() => {
-      console.log(CharacterImgs);
-      if (!CharacterImgs.match(/\S/g) || CharacterImgs == "Temp") {
-        CharacterImgs =
-          "https://i.gyazo.com/66974b194f7eeecf4d3ab8ddc3450ac2.gif";
-      }
+function change(before_url, after_url) {}
+
+setInterval(() => {
+  chrome.storage.local.get(["CharacterImg"], function (value) {
+    CharacterImgs = value.CharacterImg;
+  });
+  setTimeout(() => {
+    console.log(CharacterImgs);
+    if (CharacterImgs === undefined) {
+      CharacterImgs =
+        "https://i.gyazo.com/66974b194f7eeecf4d3ab8ddc3450ac2.gif";
+    }
+    var urls = window.location.href;
+    if (
+      $("canvas.unselectable").length &&
+      urls.match(
+        /https:\/\/player.technologia-schoolofmagic.jp\/player\/step.*/
+      ) &&
+      !urls.match(/.*step_label=lesson_cleared.*/)
+    ) {
       $("canvas.unselectable").remove();
       var cl = document.getElementsByClassName("react-draggable");
       for (i = 0; i < cl.length; i++) {
@@ -37,6 +39,6 @@ function change(before_url, after_url) {
           .getElementsByClassName("react-draggable")
           [i].insertAdjacentHTML("afterbegin", clstr);
       }
-    }, 1000);
-  }
-}
+    }
+  }, 1000);
+}, 500);
