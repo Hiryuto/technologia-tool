@@ -6,7 +6,7 @@ setInterval(() => {
 	});
 	setTimeout(() => {
 		console.log(CharacterImgs);
-		if (CharacterImgs === undefined) {
+		if (CharacterImgs == "null"||CharacterImgs == undefined) {
 			CharacterImgs =
 				"https://i.gyazo.com/66974b194f7eeecf4d3ab8ddc3450ac2.gif";
 		}
