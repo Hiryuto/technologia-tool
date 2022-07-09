@@ -9,16 +9,23 @@ chrome.runtime.onInstalled.addListener((details) => {
     chrome.tabs.create({ url: "update.html" });
     //ゲームの変数をChromeの同期ストレージに作成
     //プレイヤーステータスの作成
-    chrome.storage.local.set({gameLevel:"1"});
-    chrome.storage.local.set({gameExp:"0"});
-    chrome.storage.local.set({gemeTotalExp:"0"});
-    chrome.storage.local.set({gameHp:"null"});
-    chrome.storage.local.set({gameAtk:"null"});
-    chrome.storage.local.set({gameDef:"null"});
-    chrome.storage.local.set({gameSpd:"null"});
+    var statuss = {
+      level: 1,
+      exp: 0,
+      totalExp: 0,
+      hp: 10,
+      atk: 1,
+      def: 1,
+      spd: 1,
+      point: 100,
+    };
+    var status = JSON.stringify(statuss);
+    chrome.storage.local.set({
+      gamestatus: status,
+    });
     //システム
-    chrome.storage.local.set({gameInv:"null"});
-    chrome.storage.local.set({gameGear:"null"});
-    chrome.storage.local.set({gameSkill:"null"});
+    chrome.storage.local.set({ gameInv: "null" });
+    chrome.storage.local.set({ gameGear: "null" });
+    chrome.storage.local.set({ gameSkill: "null" });
   }
 });
