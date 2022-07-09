@@ -32,7 +32,7 @@
       "//変数の宣言",
       "/**",
       " * ステータスが入る変数です",
-      " * @type {{level: レベル,exp: 経験値,totalExp: 累計経験値,hp: 体力,atk: 攻撃力,def: 防御力,spd: スピード,}}",
+      " * @type {{level: レベル,exp: 経験値,totalExp: 累計経験値,hp: 体力,atk: 攻撃力,def: 防御力,spd: スピード,point:ステータスポイント,coin:コイン,}}",
       " */",
       "var Status;",
       "",

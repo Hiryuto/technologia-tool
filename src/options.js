@@ -71,6 +71,7 @@ function ImageTempsave(saveValue) {
   setTimeout(function () {
     chrome.storage.local.get(["TempImg"], function (result) {
       CharacterImgs = result.TempImg;
+      console.log(CharacterImgs);
       document.querySelector(
         "#uploadImageArea"
       ).innerHTML = `<img src="${CharacterImgs}" id="image" width="222" height="auto" max-width="100%"

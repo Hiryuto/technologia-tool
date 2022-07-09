@@ -18,12 +18,19 @@ chrome.runtime.onInstalled.addListener((details) => {
       def: 1,
       spd: 1,
       point: 100,
+      coin: 0,
     };
     var status = JSON.stringify(statuss);
     chrome.storage.local.set({
       gamestatus: status,
     });
     //システム
+    var flag = {
+      stage: 2,
+      stage1: 1,
+    };
+    flags = JSON.stringify(flag);
+    chrome.storage.local.set({ flag: flags });
     chrome.storage.local.set({ gameInv: "null" });
     chrome.storage.local.set({ gameGear: "null" });
     chrome.storage.local.set({ gameSkill: "null" });
