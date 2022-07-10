@@ -17,7 +17,7 @@ chrome.runtime.onInstalled.addListener((details) => {
       atk: 1,
       def: 1,
       spd: 1,
-      point: 100,
+      point: 0,
       coin: 0,
     };
     var status = JSON.stringify(statuss);
@@ -26,8 +26,8 @@ chrome.runtime.onInstalled.addListener((details) => {
     });
     //システム
     var flag = {
-      stage: 2,
-      stage1: 1,
+      stage: 1,
+      stageClear: [1, 0],
     };
     flags = JSON.stringify(flag);
     chrome.storage.local.set({ flag: flags });
