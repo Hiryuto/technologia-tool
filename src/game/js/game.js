@@ -43,7 +43,7 @@ setTimeout(() => {
   textContent("def", Status.def);
   textContent("spd", Status.spd);
   textContent("coin", Status.coin);
-}, 50);
+}, 400);
 
 //ボタン制御
 document.getElementById("exploration").addEventListener("click", () => {
