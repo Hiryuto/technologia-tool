@@ -146,6 +146,78 @@ async function huwama() {
   });
 }
 
+async function yarusiyao() {
+  chrome.storage.local.get(["flag"], function (response) {
+    flag = JSON.parse(response.flag);
+  });
+  await sleep(300);
+  switch (flag.stageClear[1]) {
+    case 1:
+      stageview(2, 1);
+      break;
+    case 2:
+      stageview(2, 2);
+      break;
+    case 3:
+      stageview(2, 3);
+      break;
+    case 4:
+      stageview(2, 4);
+      break;
+    case 5:
+      stageview(2, 5);
+      break;
+    case 6:
+      stageview(2, 6);
+      break;
+    case 7:
+      stageview(2, 7);
+      break;
+    case 8:
+      stageview(2, 8);
+      break;
+    case 9:
+      stageview(2, 9);
+      break;
+    case 10:
+      stageview(2, 10);
+      break;
+  }
+  document.getElementById("backpage").addEventListener("click", () => {
+    main();
+  });
+  document.getElementById("huwama1-1").addEventListener("click", () => {
+    battle("ギナストワヤ", 7, 1, 1, 1, "ヤルシヤオ高原 1-1", "1", "1", 1, 1);
+  });
+  document.getElementById("huwama1-2").addEventListener("click", () => {
+    battle("ギナストワヤ", 10, 1, 1, 1, "ヤルシヤオ高原 1-2", "1", "2", 1, 4);
+  });
+  document.getElementById("huwama1-3").addEventListener("click", () => {
+    battle("ギナストワヤ", 15, 1, 1, 1, "ヤルシヤオ高原 1-3", "1", "3", 2, 3);
+  });
+  document.getElementById("huwama1-4").addEventListener("click", () => {
+    battle("ギナストワヤ", 15, 1, 1, 1, "ヤルシヤオ高原 1-4", "1", "4", 1, 5);
+  });
+  document.getElementById("huwama1-5").addEventListener("click", () => {
+    battle("ギナストワヤ", 15, 1, 1, 1, "ヤルシヤオ高原 1-5", "1", "5", 1, 6);
+  });
+  document.getElementById("huwama1-6").addEventListener("click", () => {
+    battle("ギナストワヤ", 15, 1, 1, 1, "ヤルシヤオ高原 1-6", "1", "6", 2, 6);
+  });
+  document.getElementById("huwama1-7").addEventListener("click", () => {
+    battle("ギナストワヤ", 15, 1, 1, 1, "ヤルシヤオ高原 1-7", "1", "7", 1, 7);
+  });
+  document.getElementById("huwama1-8").addEventListener("click", () => {
+    battle("ギナストワヤ", 15, 1, 1, 1, "ヤルシヤオ高原 1-8", "1", "8", 1, 8);
+  });
+  document.getElementById("huwama1-9").addEventListener("click", () => {
+    battle("ギナストワヤ", 15, 1, 1, 1, "ヤルシヤオ高原 1-9", "1", "9", 3, 7);
+  });
+  document.getElementById("huwama1-10").addEventListener("click", () => {
+    battle("ギナストワヤ", 15, 5, 1, 1, "ヤルシヤオ高原 1-10", "1", "10", 5, 12);
+  });
+}
+
 /*初期化 */
 setTimeout(() => {
   main();
