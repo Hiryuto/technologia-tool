@@ -15,21 +15,39 @@ var flag;
 import math
 level = 1
 exp=5
-lists=""
-while level <= 100:
-    exp= exp*1.03
-    print(str(math.floor(exp)))
-    lists =lists+","+str(math.floor(exp))
+explevel=0
+lists=str(exp)
+explist=[]
+levellist=[]
+while level <= 99:
+    lists =lists+","+str(round(exp))
     level += 1
+    explist.append(round(exp))
+    levellist.append(round(level))
+    exp= exp*1.03
+while level <= 149:
+    lists =lists+","+str(round(exp))
+    level += 1
+    explist.append(round(exp))
+    levellist.append(round(level))
+    exp= exp*1.02
+import matplotlib.pyplot as plt
 print(lists)
+
+plt.plot(levellist, explist);
+print(level)
 */
 var levelTable = {
   level: [
-    5, 5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10,
-    10, 11, 11, 11, 12, 12, 12, 13, 13, 14, 14, 14, 15, 15, 16, 16, 17, 17, 18,
-    18, 19, 20, 20, 21, 21, 22, 23, 23, 24, 25, 26, 26, 27, 28, 29, 30, 31, 32,
-    33, 34, 35, 36, 37, 38, 39, 40, 42, 43, 44, 45, 47, 48, 50, 51, 53, 54, 56,
-    58, 59, 61, 63, 65, 67, 69, 71, 73, 75, 78, 80, 82, 85, 87, 90, 93, 96,
+    5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10,
+    10, 10, 11, 11, 11, 12, 12, 13, 13, 13, 14, 14, 14, 15, 15, 16, 16, 17, 17,
+    18, 18, 19, 19, 20, 21, 21, 22, 23, 23, 24, 25, 25, 26, 27, 28, 29, 29, 30,
+    31, 32, 33, 34, 35, 36, 37, 38, 40, 41, 42, 43, 45, 46, 47, 49, 50, 52, 53,
+    55, 56, 58, 60, 62, 64, 65, 67, 69, 72, 74, 76, 78, 80, 83, 85, 88, 91, 93,
+    95, 97, 99, 101, 103, 105, 107, 109, 111, 114, 116, 118, 121, 123, 126, 128,
+    131, 133, 136, 139, 141, 144, 147, 150, 153, 156, 159, 162, 166, 169, 172,
+    176, 179, 183, 187, 190, 194, 198, 202, 206, 210, 214, 219, 223, 227, 232,
+    237, 241, 246,
   ],
 };
 
@@ -115,34 +133,34 @@ async function huwama() {
     main();
   });
   document.getElementById("huwama1-1").addEventListener("click", () => {
-    battle("スライム", 7, 1, 1, 1, "フワマ平原 1-1", "1", "1", 1, 1);
+    battle("スライム", 7, 1, 1, 1, "フワマ平原 1-1", "1", "1", 1, 2);
   });
   document.getElementById("huwama1-2").addEventListener("click", () => {
-    battle("スライム", 10, 1, 1, 1, "フワマ平原 1-2", "1", "2", 1, 4);
+    battle("スライム", 10, 1, 1, 1, "フワマ平原 1-2", "1", "2", 1, 3);
   });
   document.getElementById("huwama1-3").addEventListener("click", () => {
     battle("スライム", 15, 1, 1, 1, "フワマ平原 1-3", "1", "3", 2, 3);
   });
   document.getElementById("huwama1-4").addEventListener("click", () => {
-    battle("スライム", 20, 2, 7, 1, "フワマ平原 1-4", "1", "4", 1, 5);
+    battle("スライム", 15, 2, 7, 1, "フワマ平原 1-4", "1", "4", 1, 4);
   });
   document.getElementById("huwama1-5").addEventListener("click", () => {
-    battle("スライム", 20, 4, 7, 1, "フワマ平原 1-5", "1", "5", 1, 6);
+    battle("スライム", 20, 4, 7, 1, "フワマ平原 1-5", "1", "5", 2, 4);
   });
   document.getElementById("huwama1-6").addEventListener("click", () => {
-    battle("スライム", 20, 2, 1, 1, "フワマ平原 1-6", "1", "6", 2, 6);
+    battle("スライム", 20, 2, 1, 1, "フワマ平原 1-6", "1", "6", 2, 5);
   });
   document.getElementById("huwama1-7").addEventListener("click", () => {
-    battle("スライム", 20, 1, 1, 1, "フワマ平原 1-7", "1", "7", 1, 7);
+    battle("スライム", 20, 1, 1, 1, "フワマ平原 1-7", "1", "7", 2, 6);
   });
   document.getElementById("huwama1-8").addEventListener("click", () => {
-    battle("スライム", 20, 1, 1, 1, "フワマ平原 1-8", "1", "8", 1, 8);
+    battle("スライム", 20, 1, 1, 1, "フワマ平原 1-8", "1", "8", 2, 7);
   });
   document.getElementById("huwama1-9").addEventListener("click", () => {
     battle("スライム", 15, 1, 1, 1, "フワマ平原 1-9", "1", "9", 3, 7);
   });
   document.getElementById("huwama1-10").addEventListener("click", () => {
-    battle("スライム", 15, 5, 1, 1, "フワマ平原 1-10", "1", "10", 5, 12);
+    battle("スライム", 15, 5, 1, 1, "フワマ平原 1-10", "1", "10", 4, 10);
   });
 }
 

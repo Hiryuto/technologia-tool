@@ -6,7 +6,7 @@ chrome.runtime.onInstalled.addListener((details) => {
     chrome.storage.local.set({ authorization: "Temp" });
   }
   if (details.reason === "update") {
-    chrome.tabs.create({ url: "update.html" });
+    //chrome.tabs.create({ url: "update.html" });
     //ゲームの変数をChromeの同期ストレージに作成
     //プレイヤーステータスの作成
     var statuss = {
