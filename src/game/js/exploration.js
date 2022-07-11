@@ -70,7 +70,7 @@ async function main() {
     huwama();
   });
   document.getElementById("yarusiyao").addEventListener("click", () => {
-    window.location.href = "game.html";
+    yarusiyao();
   });
 }
 //ステージ選択後
@@ -124,19 +124,19 @@ async function huwama() {
     battle("スライム", 15, 1, 1, 1, "フワマ平原 1-3", "1", "3", 2, 3);
   });
   document.getElementById("huwama1-4").addEventListener("click", () => {
-    battle("スライム", 15, 1, 1, 1, "フワマ平原 1-4", "1", "4", 1, 5);
+    battle("スライム", 20, 2, 7, 1, "フワマ平原 1-4", "1", "4", 1, 5);
   });
   document.getElementById("huwama1-5").addEventListener("click", () => {
-    battle("スライム", 15, 1, 1, 1, "フワマ平原 1-5", "1", "5", 1, 6);
+    battle("スライム", 20, 4, 7, 1, "フワマ平原 1-5", "1", "5", 1, 6);
   });
   document.getElementById("huwama1-6").addEventListener("click", () => {
-    battle("スライム", 15, 1, 1, 1, "フワマ平原 1-6", "1", "6", 2, 6);
+    battle("スライム", 20, 2, 1, 1, "フワマ平原 1-6", "1", "6", 2, 6);
   });
   document.getElementById("huwama1-7").addEventListener("click", () => {
-    battle("スライム", 15, 1, 1, 1, "フワマ平原 1-7", "1", "7", 1, 7);
+    battle("スライム", 20, 1, 1, 1, "フワマ平原 1-7", "1", "7", 1, 7);
   });
   document.getElementById("huwama1-8").addEventListener("click", () => {
-    battle("スライム", 15, 1, 1, 1, "フワマ平原 1-8", "1", "8", 1, 8);
+    battle("スライム", 20, 1, 1, 1, "フワマ平原 1-8", "1", "8", 1, 8);
   });
   document.getElementById("huwama1-9").addEventListener("click", () => {
     battle("スライム", 15, 1, 1, 1, "フワマ平原 1-9", "1", "9", 3, 7);
@@ -214,7 +214,18 @@ async function yarusiyao() {
     battle("ギナストワヤ", 15, 1, 1, 1, "ヤルシヤオ高原 1-9", "1", "9", 3, 7);
   });
   document.getElementById("huwama1-10").addEventListener("click", () => {
-    battle("ギナストワヤ", 15, 5, 1, 1, "ヤルシヤオ高原 1-10", "1", "10", 5, 12);
+    battle(
+      "ギナストワヤ",
+      15,
+      5,
+      1,
+      1,
+      "ヤルシヤオ高原 1-10",
+      "1",
+      "10",
+      5,
+      12
+    );
   });
 }
 
@@ -283,11 +294,11 @@ function battle(
       await sleep(500);
       var random = Math.floor(Math.random() * (2 + 1 - 1)) + 1;
       if (random == 2) {
-        atk = Math.ceil(Status.atk / (1 + enemyDef / 100));
+        atk = Math.ceil(Status.atk / (1 + enemyDef / 10));
         nowenemyHp -= atk;
         log += `\n${enemyName}に${atk}ダメージを与えた！`;
       } else if (random == 1) {
-        atk = Math.ceil(enemyAtk / (1 + Status.def / 100));
+        atk = Math.ceil(enemyAtk / (1 + Status.def / 10));
         nowplayerHp -= atk;
         log += `\n${enemyName}から${atk}ダメージを受けた！`;
       }
