@@ -39,15 +39,22 @@ print(level)
 */
 var levelTable = {
   level: [
-    5, 5, 5, 5, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10,
-    10, 10, 11, 11, 11, 12, 12, 13, 13, 13, 14, 14, 14, 15, 15, 16, 16, 17, 17,
-    18, 18, 19, 19, 20, 21, 21, 22, 23, 23, 24, 25, 25, 26, 27, 28, 29, 29, 30,
-    31, 32, 33, 34, 35, 36, 37, 38, 40, 41, 42, 43, 45, 46, 47, 49, 50, 52, 53,
-    55, 56, 58, 60, 62, 64, 65, 67, 69, 72, 74, 76, 78, 80, 83, 85, 88, 91, 93,
-    95, 97, 99, 101, 103, 105, 107, 109, 111, 114, 116, 118, 121, 123, 126, 128,
-    131, 133, 136, 139, 141, 144, 147, 150, 153, 156, 159, 162, 166, 169, 172,
-    176, 179, 183, 187, 190, 194, 198, 202, 206, 210, 214, 219, 223, 227, 232,
-    237, 241, 246,
+    5, 5, 6, 6, 7, 8, 9, 10, 12, 13, 14, 14, 15, 16, 16, 17, 17, 18, 19, 20, 20,
+    21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 32, 33, 34, 35, 37, 38, 40, 41, 43,
+    45, 45, 46, 46, 47, 47, 48, 48, 49, 49, 50, 50, 51, 51, 52, 52, 53, 53, 54,
+    54, 55, 55, 56, 56, 57, 57, 58, 59, 59, 60, 60, 61, 62, 62, 63, 64, 64, 65,
+    65, 66, 67, 67, 68, 69, 69, 70, 71, 72, 72, 73, 74, 74, 75, 76, 77, 78, 78,
+    79, 80, 81, 81, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 82, 83, 83, 83,
+    83, 83, 83, 83, 83, 83, 83, 83, 83, 84, 84, 84, 84, 84, 84, 84, 84, 84, 84,
+    84, 84, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 85, 86, 86, 86, 86, 86,
+    86, 86, 86, 86, 86, 86, 86, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 87, 88,
+    88, 88, 88, 88, 88, 88, 88, 88, 88, 88, 88, 89, 89, 89, 89, 89, 89, 89, 89,
+    89, 89, 89, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 90, 91, 91, 91, 91, 91,
+    91, 91, 91, 91, 91, 91, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 92, 93, 93,
+    93, 93, 93, 93, 93, 93, 93, 93, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94, 94,
+    95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 95, 96, 96, 96, 96, 96, 96, 96, 96,
+    96, 96, 97, 97, 97, 97, 97, 97, 97, 97, 97, 97, 98, 98, 98, 98, 98, 98, 98,
+    98, 98, 98, 98, 99, 99, 99, 99, 99, 99, 99, 99, 99,
   ],
 };
 
@@ -204,34 +211,45 @@ async function yarusiyao() {
   document.getElementById("backpage").addEventListener("click", () => {
     main();
   });
-  document.getElementById("huwama1-1").addEventListener("click", () => {
-    battle("ギナストワヤ", 7, 1, 1, 1, "ヤルシヤオ高原 1-1", "1", "1", 1, 1);
+  document.getElementById("yarusiyao2-1").addEventListener("click", () => {
+    battle("ギナストワヤ", 20, 3, 14, 1, "ヤルシヤオ高原 1-1", "1", "1", 5, 7);
   });
-  document.getElementById("huwama1-2").addEventListener("click", () => {
-    battle("ギナストワヤ", 10, 1, 1, 1, "ヤルシヤオ高原 1-2", "1", "2", 1, 4);
+  document.getElementById("yarusiyao2-2").addEventListener("click", () => {
+    battle("ギナストワヤ", 20, 5, 1, 1, "ヤルシヤオ高原 1-2", "1", "2", 5, 8);
   });
-  document.getElementById("huwama1-3").addEventListener("click", () => {
-    battle("ギナストワヤ", 15, 1, 1, 1, "ヤルシヤオ高原 1-3", "1", "3", 2, 3);
+  document.getElementById("yarusiyao2-3").addEventListener("click", () => {
+    battle("ギナストワヤ", 20, 5, 7, 1, "ヤルシヤオ高原 1-3", "1", "3", 6, 7);
   });
-  document.getElementById("huwama1-4").addEventListener("click", () => {
-    battle("ギナストワヤ", 15, 1, 1, 1, "ヤルシヤオ高原 1-4", "1", "4", 1, 5);
+  document.getElementById("yarusiyao2-4").addEventListener("click", () => {
+    battle("ギナストワヤ", 15, 2, 21, 1, "ヤルシヤオ高原 1-4", "1", "4", 6, 8);
   });
-  document.getElementById("huwama1-5").addEventListener("click", () => {
-    battle("ギナストワヤ", 15, 1, 1, 1, "ヤルシヤオ高原 1-5", "1", "5", 1, 6);
+  document.getElementById("yarusiyao2-5").addEventListener("click", () => {
+    battle("ギナストワヤ", 25, 4, 7, 1, "ヤルシヤオ高原 1-5", "1", "5", 6, 9);
   });
-  document.getElementById("huwama1-6").addEventListener("click", () => {
-    battle("ギナストワヤ", 15, 1, 1, 1, "ヤルシヤオ高原 1-6", "1", "6", 2, 6);
+  document.getElementById("yarusiyao2-6").addEventListener("click", () => {
+    battle("ギナストワヤ", 30, 4, 14, 1, "ヤルシヤオ高原 1-6", "1", "6", 7, 8);
   });
-  document.getElementById("huwama1-7").addEventListener("click", () => {
-    battle("ギナストワヤ", 15, 1, 1, 1, "ヤルシヤオ高原 1-7", "1", "7", 1, 7);
+  document.getElementById("yarusiyao2-7").addEventListener("click", () => {
+    battle("ギナストワヤ", 35, 3, 7, 1, "ヤルシヤオ高原 1-7", "1", "7", 7, 9);
   });
-  document.getElementById("huwama1-8").addEventListener("click", () => {
-    battle("ギナストワヤ", 15, 1, 1, 1, "ヤルシヤオ高原 1-8", "1", "8", 1, 8);
+  document.getElementById("yarusiyao2-8").addEventListener("click", () => {
+    battle("ギナストワヤ", 30, 5, 14, 1, "ヤルシヤオ高原 1-8", "1", "8", 8, 9);
   });
-  document.getElementById("huwama1-9").addEventListener("click", () => {
-    battle("ギナストワヤ", 15, 1, 1, 1, "ヤルシヤオ高原 1-9", "1", "9", 3, 7);
+  document.getElementById("yarusiyao2-9").addEventListener("click", () => {
+    battle(
+      "ギナストワヤ",
+      50,
+      5,
+      21,
+      1,
+      "ヤルシヤオ高原 1-9",
+      "1",
+      "9",
+      10,
+      12
+    );
   });
-  document.getElementById("huwama1-10").addEventListener("click", () => {
+  document.getElementById("yarusiyao2-10").addEventListener("click", () => {
     battle(
       "ギナストワヤ",
       15,

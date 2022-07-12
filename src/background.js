@@ -4,8 +4,6 @@ chrome.runtime.onInstalled.addListener((details) => {
     chrome.storage.local.set({ CharacterImg: "Temp" });
     chrome.storage.local.set({ TempImg: "Temp" });
     chrome.storage.local.set({ authorization: "Temp" });
-  }
-  if (details.reason === "update") {
     //chrome.tabs.create({ url: "update.html" });
     //ゲームの変数をChromeの同期ストレージに作成
     //プレイヤーステータスの作成
@@ -26,13 +24,15 @@ chrome.runtime.onInstalled.addListener((details) => {
     });
     //システム
     var flag = {
-      stage: 1,
-      stageClear: [1, 0],
+      stage: 2,
+      stageClear: [10, 1],
     };
     flags = JSON.stringify(flag);
     chrome.storage.local.set({ flag: flags });
     chrome.storage.local.set({ gameInv: "null" });
     chrome.storage.local.set({ gameGear: "null" });
     chrome.storage.local.set({ gameSkill: "null" });
+  }
+  if (details.reason === "update") {
   }
 });
