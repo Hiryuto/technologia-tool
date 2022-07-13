@@ -24,8 +24,8 @@ chrome.runtime.onInstalled.addListener((details) => {
     });
     //システム
     var flag = {
-      stage: 2,
-      stageClear: [10, 1],
+      stage: 1,
+      stageClear: [1, 1],
     };
     flags = JSON.stringify(flag);
     chrome.storage.local.set({ flag: flags });

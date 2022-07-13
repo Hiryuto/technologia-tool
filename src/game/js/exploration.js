@@ -11,6 +11,9 @@ var Status;
  */
 var flag;
 
+//バトル情報
+var battleinfo = { info: [] };
+
 /*
 import math
 level = 1
@@ -140,34 +143,56 @@ async function huwama() {
     main();
   });
   document.getElementById("huwama1-1").addEventListener("click", () => {
-    battle("スライム", 7, 1, 1, 1, "フワマ平原 1-1", "1", "1", 1, 2);
+    battleinfo = {
+      info: ["スライム", 7, 1, 1, 1, "フワマ平原 1-1", "1", "1", 1, 2],
+    };
+    battle();
   });
   document.getElementById("huwama1-2").addEventListener("click", () => {
-    battle("スライム", 10, 1, 1, 1, "フワマ平原 1-2", "1", "2", 1, 3);
+    battleinfo = {
+      info: ["スライム", 10, 1, 1, 1, "フワマ平原 1-2", "1", "2", 1, 3],
+    };
+    battle();
   });
   document.getElementById("huwama1-3").addEventListener("click", () => {
-    battle("スライム", 15, 1, 1, 1, "フワマ平原 1-3", "1", "3", 2, 3);
+    battleinfo = {
+      info: ["スライム", 15, 1, 1, 1, "フワマ平原 1-3", "1", "3", 2, 3],
+    };
   });
   document.getElementById("huwama1-4").addEventListener("click", () => {
-    battle("スライム", 15, 2, 7, 1, "フワマ平原 1-4", "1", "4", 1, 4);
+    battleinfo = {
+      info: ["スライム", 15, 2, 7, 1, "フワマ平原 1-4", "1", "4", 1, 4],
+    };
   });
   document.getElementById("huwama1-5").addEventListener("click", () => {
-    battle("スライム", 20, 4, 7, 1, "フワマ平原 1-5", "1", "5", 2, 4);
+    battleinfo = {
+      info: ["スライム", 20, 4, 7, 1, "フワマ平原 1-5", "1", "5", 2, 4],
+    };
   });
   document.getElementById("huwama1-6").addEventListener("click", () => {
-    battle("スライム", 20, 2, 1, 1, "フワマ平原 1-6", "1", "6", 2, 5);
+    battleinfo = {
+      info: ["スライム", 20, 2, 1, 1, "フワマ平原 1-6", "1", "6", 2, 5],
+    };
   });
   document.getElementById("huwama1-7").addEventListener("click", () => {
-    battle("スライム", 20, 1, 1, 1, "フワマ平原 1-7", "1", "7", 2, 6);
+    battleinfo = {
+      info: ["スライム", 20, 1, 1, 1, "フワマ平原 1-7", "1", "7", 2, 6],
+    };
   });
   document.getElementById("huwama1-8").addEventListener("click", () => {
-    battle("スライム", 20, 1, 1, 1, "フワマ平原 1-8", "1", "8", 2, 7);
+    battleinfo = {
+      info: ["スライム", 20, 1, 1, 1, "フワマ平原 1-8", "1", "8", 2, 7],
+    };
   });
   document.getElementById("huwama1-9").addEventListener("click", () => {
-    battle("スライム", 15, 1, 1, 1, "フワマ平原 1-9", "1", "9", 3, 7);
+    battleinfo = {
+      info: ["スライム", 15, 1, 1, 1, "フワマ平原 1-9", "1", "9", 3, 7],
+    };
   });
   document.getElementById("huwama1-10").addEventListener("click", () => {
-    battle("スライム", 15, 5, 1, 1, "フワマ平原 1-10", "1", "10", 4, 10);
+    battleinfo = {
+      info: ["スライム", 15, 5, 1, 1, "フワマ平原 1-10", "1", "10", 4, 10],
+    };
   });
 }
 
@@ -212,56 +237,120 @@ async function yarusiyao() {
     main();
   });
   document.getElementById("yarusiyao2-1").addEventListener("click", () => {
-    battle("ギナストワヤ", 20, 3, 14, 1, "ヤルシヤオ高原 1-1", "1", "1", 5, 7);
+    battleinfo = {
+      info: [
+        "ギナストワヤ",
+        20,
+        3,
+        14,
+        1,
+        "ヤルシヤオ高原 1-1",
+        "1",
+        "1",
+        5,
+        7,
+      ],
+    };
   });
   document.getElementById("yarusiyao2-2").addEventListener("click", () => {
-    battle("ギナストワヤ", 20, 5, 1, 1, "ヤルシヤオ高原 1-2", "1", "2", 5, 8);
+    battleinfo = {
+      info: ["ギナストワヤ", 20, 5, 1, 1, "ヤルシヤオ高原 1-2", "1", "2", 5, 8],
+    };
   });
   document.getElementById("yarusiyao2-3").addEventListener("click", () => {
-    battle("ギナストワヤ", 20, 5, 7, 1, "ヤルシヤオ高原 1-3", "1", "3", 6, 7);
+    battleinfo = {
+      info: ["ギナストワヤ", 20, 5, 7, 1, "ヤルシヤオ高原 1-3", "1", "3", 6, 7],
+    };
   });
   document.getElementById("yarusiyao2-4").addEventListener("click", () => {
-    battle("ギナストワヤ", 15, 2, 21, 1, "ヤルシヤオ高原 1-4", "1", "4", 6, 8);
+    battleinfo = {
+      info: [
+        "ギナストワヤ",
+        15,
+        2,
+        21,
+        1,
+        "ヤルシヤオ高原 1-4",
+        "1",
+        "4",
+        6,
+        8,
+      ],
+    };
   });
   document.getElementById("yarusiyao2-5").addEventListener("click", () => {
-    battle("ギナストワヤ", 25, 4, 7, 1, "ヤルシヤオ高原 1-5", "1", "5", 6, 9);
+    battleinfo = {
+      info: ["ギナストワヤ", 25, 4, 7, 1, "ヤルシヤオ高原 1-5", "1", "5", 6, 9],
+    };
   });
   document.getElementById("yarusiyao2-6").addEventListener("click", () => {
-    battle("ギナストワヤ", 30, 4, 14, 1, "ヤルシヤオ高原 1-6", "1", "6", 7, 8);
+    battleinfo = {
+      info: [
+        "ギナストワヤ",
+        30,
+        4,
+        14,
+        1,
+        "ヤルシヤオ高原 1-6",
+        "1",
+        "6",
+        7,
+        8,
+      ],
+    };
   });
   document.getElementById("yarusiyao2-7").addEventListener("click", () => {
-    battle("ギナストワヤ", 35, 3, 7, 1, "ヤルシヤオ高原 1-7", "1", "7", 7, 9);
+    battleinfo = {
+      info: ["ギナストワヤ", 35, 3, 7, 1, "ヤルシヤオ高原 1-7", "1", "7", 7, 9],
+    };
   });
   document.getElementById("yarusiyao2-8").addEventListener("click", () => {
-    battle("ギナストワヤ", 30, 5, 14, 1, "ヤルシヤオ高原 1-8", "1", "8", 8, 9);
+    battleinfo = {
+      info: [
+        "ギナストワヤ",
+        30,
+        5,
+        14,
+        1,
+        "ヤルシヤオ高原 1-8",
+        "1",
+        "8",
+        8,
+        9,
+      ],
+    };
   });
   document.getElementById("yarusiyao2-9").addEventListener("click", () => {
-    battle(
-      "ギナストワヤ",
-      50,
-      5,
-      21,
-      1,
-      "ヤルシヤオ高原 1-9",
-      "1",
-      "9",
-      10,
-      12
-    );
+    battleinfo = {
+      info: [
+        "ギナストワヤ",
+        50,
+        5,
+        21,
+        1,
+        "ヤルシヤオ高原 1-9",
+        "1",
+        "9",
+        10,
+        12,
+      ],
+    };
   });
   document.getElementById("yarusiyao2-10").addEventListener("click", () => {
-    battle(
-      "ギナストワヤ",
-      15,
-      5,
-      1,
-      1,
-      "ヤルシヤオ高原 1-10",
-      "1",
-      "10",
-      5,
-      12
-    );
+    battleinfo = {
+      info: [
+        "ギナストワヤ",
+        15,
+        5,
+        1,
+        1,
+        "ヤルシヤオ高原 1-10",
+        "1",
+        "10",
+        5,
+        12,
+      ],
+    };
   });
 }
 
@@ -274,32 +363,11 @@ setTimeout(() => {
 
 /**
  * 敵とバトルする
- * @param {敵の名前} enemyName
- * @param {敵のHP} enemyHp
- * @param {敵の攻撃力} enemyAtk
- * @param {敵の防御力} enemyDef
- * @param {敵のスピード} enemySpd
- * @param {ステージ名} stageName
- * @param {内部ステージID} stageids
- * @param {ステージID} stageid
- * @param {経験値の最低} expmin
- * @param {経験値の最大} expmax
  */
-function battle(
-  enemyName,
-  enemyHp,
-  enemyAtk,
-  enemyDef,
-  enemySpd,
-  stageName,
-  stageids,
-  stageid,
-  expmin,
-  expmax
-) {
+function battle() {
   innerHTML(
     "screen",
-    `<h2>敵の情報</h2><h3>${enemyName}</h3><div class="box"><div class="statusbox" style="display: flex;justify-content: center;"><p>HP:${enemyHp}</p><p>Atk:${enemyAtk}</p></div><div class="statusbox" style="display: flex;justify-content: center;"><p>Def:${enemyDef}</p><p>Spd:${enemySpd}</p></div></div><h2>自分の情報</h2><div class="box"><div class="statusbox" style="display: flex;justify-content: center;"><p>HP:${Status.hp}</p><p>ATK:${Status.atk}</p></div><div class="statusbox" style="display: flex;justify-content: center;"><p>DEF:${Status.def}</p><p>SPD:${Status.spd}</p></div></div></div><button id="start">バトルを開始する</button><hr><button id="backpage">クエストページに戻る</button>`
+    `<h2>敵の情報</h2><h3>${battleinfo.info[0]}</h3><div class="box"><div class="statusbox" style="display: flex;justify-content: center;"><p>HP:${battleinfo.info[1]}</p><p>Atk:${battleinfo.info[2]}</p></div><div class="statusbox" style="display: flex;justify-content: center;"><p>Def:${battleinfo.info[3]}</p><p>Spd:${battleinfo.info[4]}</p></div></div><h2>自分の情報</h2><div class="box"><div class="statusbox" style="display: flex;justify-content: center;"><p>HP:${Status.hp}</p><p>ATK:${Status.atk}</p></div><div class="statusbox" style="display: flex;justify-content: center;"><p>DEF:${Status.def}</p><p>SPD:${Status.spd}</p></div></div></div><button id="start">バトルを開始する</button><hr><button id="backpage">クエストページに戻る</button>`
   );
   document.getElementById("mainpage").style.display = "none";
   document.getElementById("hr").style.display = "none";
@@ -308,7 +376,7 @@ function battle(
     main();
   });
   document.getElementById("start").addEventListener("click", async function () {
-    var nowenemyHp = enemyHp;
+    var nowenemyHp = battleinfo.info[1];
     var nowplayerHp = Status.hp;
     var log = "";
     var atk;
@@ -316,8 +384,7 @@ function battle(
     var nowexp;
     var levelUp = "";
     var stageMessage = "";
-
-    pageload(stageName, enemyName, enemyHp, nowenemyHp, nowplayerHp, log);
+    pageload(nowenemyHp, nowplayerHp, log);
     while (nowenemyHp > 0) {
       if (nowenemyHp < 0) {
         nowenemyHp = 0;
@@ -330,27 +397,29 @@ function battle(
       await sleep(500);
       var random = Math.floor(Math.random() * (2 + 1 - 1)) + 1;
       if (random == 2) {
-        atk = Math.ceil(Status.atk / (1 + enemyDef / 10));
+        atk = Math.ceil(Status.atk / (1 + battleinfo.info[3] / 10));
         nowenemyHp -= atk;
-        log += `\n${enemyName}に${atk}ダメージを与えた！`;
+        log += `\n${battleinfo.info[0]}に${atk}ダメージを与えた！`;
       } else if (random == 1) {
-        atk = Math.ceil(enemyAtk / (1 + Status.def / 10));
+        atk = Math.ceil(battleinfo.info[2] / (1 + Status.def / 10));
         nowplayerHp -= atk;
-        log += `\n${enemyName}から${atk}ダメージを受けた！`;
+        log += `\n${battleinfo.info[0]}から${atk}ダメージを受けた！`;
       }
       if (nowenemyHp < 0) {
         nowenemyHp = 0;
       } else if (nowplayerHp < 0) {
         nowplayerHp = 0;
       }
-      pageload(stageName, enemyName, enemyHp, nowenemyHp, nowplayerHp, log);
+      pageload(nowenemyHp, nowplayerHp, log);
     }
     if (nowenemyHp == 0) {
       log += `\n戦闘に勝利した！`;
-      pageload(stageName, enemyName, enemyHp, nowenemyHp, nowplayerHp, log);
+      pageload(nowenemyHp, nowplayerHp, log);
       await sleep(2000);
       var ExpRandom =
-        Math.floor(Math.random() * (expmax + 1 - expmin)) + expmin;
+        Math.floor(
+          Math.random() * (battleinfo.info[9] + 1 - battleinfo.info[8])
+        ) + battleinfo.info[8];
       Status.exp += ExpRandom;
       Status.totalExp += ExpRandom;
       if (levelTable.level[Status.level - 1] <= Status.exp) {
@@ -366,15 +435,18 @@ function battle(
       nowexp = Status.exp;
       leftexp = levelTable.level[Status.level - 1] - nowexp;
       setstatus = JSON.stringify(Status);
-      if (flag.stageClear[stageids - 1] == stageid) {
-        if (flag.stageClear[stageids - 1] == 10 && flag.stage == stageids) {
+      if (flag.stageClear[battleinfo.info[6] - 1] == battleinfo.info[7]) {
+        if (
+          flag.stageClear[battleinfo.info[6] - 1] == 10 &&
+          flag.stage == battleinfo.info[6]
+        ) {
           flag.stage++;
           stageMessage = "新たなステージが開放されました！";
         } else if (
-          flag.stageClear[stageids - 1] !== 10 &&
-          flag.stage !== stageids
+          flag.stageClear[battleinfo.info[6] - 1] !== 10 &&
+          flag.stage !== battleinfo.info[6]
         ) {
-          flag.stageClear[stageids - 1]++;
+          flag.stageClear[battleinfo.info[6] - 1]++;
         }
       }
       flags = JSON.stringify(flag);
@@ -392,17 +464,20 @@ function battle(
       document.getElementById("br").style.display = "block";
     } else if (nowplayerHp == 0) {
       log += `\n戦闘に負けてしまった...`;
-      pageload(stageName, enemyName, enemyHp, nowenemyHp, nowplayerHp, log);
+      pageload(nowenemyHp, nowplayerHp, log);
       await sleep(2000);
       innerHTML(
         "screen",
-        `<h1>敗北...</h1><hr><button id="backpage">クエストページに戻る</button>`
+        `<h1>敗北...</h1><button id="retry">再挑戦</button><hr><button id="backpage">クエストページに戻る</button>`
       );
       document.getElementById("mainpage").style.display = "inline-block";
       document.getElementById("br").style.display = "block";
     }
     document.getElementById("backpage").addEventListener("click", () => {
       main();
+    });
+    document.getElementById("retry").addEventListener("click", () => {
+      battle();
     });
   });
 }
@@ -432,17 +507,15 @@ const sleep = (waitTime) =>
 
 /**
  * 画面を更新する関数
- * @param {stage名} stageName
- * @param {敵の名前} enemyName
- * @param {敵のHP} enemyHp
  * @param {今の敵のHP} nowenemyHp
  * @param {今の自分のHP} nowplayerHp
  * @param {log} log
  */
-function pageload(stageName, enemyName, enemyHp, nowenemyHp, nowplayerHp, log) {
+function pageload(nowenemyHp, nowplayerHp, log) {
+  console.log(nowenemyHp);
   innerHTML(
     "screen",
-    `<h1>${stageName}</h1><h2>敵の状態</h2><h3 style="margin-bottom: 0px;">${enemyName}</h3><h4>HP</h4><h5 style="margin:0px 0px">${nowenemyHp}/${enemyHp}</h5><progress style="height: 20px;" value="${nowenemyHp}" max="${enemyHp}">HP</progress><hr><h2>自分の情報</h2><h4>HP</h4><h5 style="margin:0px 0px">${nowplayerHp}/${Status.hp}</h5><progress style="height: 20px;" value="${nowplayerHp}" max="${Status.hp}">HP</progress><hr><h4>バトルログ</h4><textarea id="log" rows="4" cols="40" style="overflow:hidden;resize: none;" disabled>${log}</textarea>`
+    `<h1>${battleinfo.info[5]}</h1><h2>敵の状態</h2><h3 style="margin-bottom: 0px;">${battleinfo.info[0]}</h3><h4>HP</h4><h5 style="margin:0px 0px">${nowenemyHp}/${battleinfo.info[1]}</h5><progress style="height: 20px;" value="${nowenemyHp}" max="${battleinfo.info[1]}">HP</progress><hr><h2>自分の情報</h2><h4>HP</h4><h5 style="margin:0px 0px">${nowplayerHp}/${Status.hp}</h5><progress style="height: 20px;" value="${nowplayerHp}" max="${Status.hp}">HP</progress><hr><h4>バトルログ</h4><textarea id="log" rows="4" cols="40" style="overflow:hidden;resize: none;" disabled>${log}</textarea>`
   );
   document.getElementById("log").scrollTop =
     document.getElementById("log").scrollHeight;
