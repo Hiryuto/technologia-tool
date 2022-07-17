@@ -7,11 +7,13 @@ var Status;
 
 /**
  * ゲームフラグが管理されている変数です
- * @type {json}
+ * @type {{stage: 最大クリア親ステージ,stageClear: [最大クリアステージ],}}
  */
 var flag;
-
-//バトル情報
+/**
+ * バトル情報を管理する変数
+ * @type {{info:[敵の名前,敵のHP,敵の攻撃力,敵の防御力,敵のスピード,"Fullステージ名",親ステージID,ステージID,最低ドロップ経験値量,最大ドロップ経験値量]}}
+ */
 var battleinfo = { info: [] };
 
 /*
@@ -61,7 +63,10 @@ var levelTable = {
   ],
 };
 
-//stageID
+/**
+ * ステージを管理する変数
+ * @type {{stageName:[ステージの名前],stageID:[ステージのID]}}
+ */
 var StageIDs = {
   stageName: ["フワマ平原", "ヤルシヤオ高原"],
   stageID: ["huwama", "yarusiyao"],
@@ -74,15 +79,18 @@ chrome.storage.local.get([`gamestatus`], function (response) {
 chrome.storage.local.get(["flag"], function (response) {
   flag = JSON.parse(response.flag);
 });
-//メインページ
+//メインページを描画する
 async function main() {
+  //Chromeのストレージから「ゲームのステータス」を取得する
   chrome.storage.local.get([`gamestatus`], function (response) {
     Status = JSON.parse(response.gamestatus);
   });
+  //Chromeのストレージから「フラグ」を取得する
   chrome.storage.local.get(["flag"], function (response) {
     flag = JSON.parse(response.flag);
   });
   await sleep(300);
+  //「フラグ」から親ステージ情報を取得して描画する
   switch (flag.stage) {
     case 1:
       stageselect(1);
@@ -91,22 +99,33 @@ async function main() {
       stageselect(2);
       break;
   }
+  //メインページのボタンが押されるとメインページに移動する
   document.getElementById("mainpage").addEventListener("click", () => {
     window.location.href = "game.html";
   });
+  //「ステージ」フワマ平原がクリックされるとhuwamaを実行する
   document.getElementById("huwama").addEventListener("click", () => {
     huwama();
   });
+  //「ステージ」ヤルシヤオ高原がクリックされるとyarusiyaoを実行する
   document.getElementById("yarusiyao").addEventListener("click", () => {
     yarusiyao();
   });
 }
-//ステージ選択後
+
+/* ステージ描画関数 */
+
+/**
+ * フワマ平原を描画する
+ */
 async function huwama() {
+  //「フラグ」を再取得する
   chrome.storage.local.get(["flag"], function (response) {
     flag = JSON.parse(response.flag);
   });
   await sleep(300);
+  //「フラグ」からステージのクリア情報を取得して描画する
+  //stageview([親ステージID],[ステージID])
   switch (flag.stageClear[0]) {
     case 1:
       stageview(1, 1);
@@ -139,62 +158,70 @@ async function huwama() {
       stageview(1, 10);
       break;
   }
-  document.getElementById("backpage").addEventListener("click", () => {
+  //「クエストページに戻る」が選択された時にクエストページを描画する関数を呼び出す
+  document.getElementById("backquest").addEventListener("click", () => {
     main();
   });
+
+  /* 各クエストのボタンが押されるとステータス情報をbattle関数に渡す */
+
   document.getElementById("huwama1-1").addEventListener("click", () => {
     battleinfo = {
-      info: ["スライム", 7, 1, 1, 1, "フワマ平原 1-1", "1", "1", 1, 2],
+      info: ["スライム", 7, 1, 1, 1, "フワマ平原 1-1", 1, 1, 1, 2],
     };
     battle();
   });
   document.getElementById("huwama1-2").addEventListener("click", () => {
     battleinfo = {
-      info: ["スライム", 10, 1, 1, 1, "フワマ平原 1-2", "1", "2", 1, 3],
+      info: ["スライム", 10, 1, 1, 1, "フワマ平原 1-2", 1, 2, 1, 3],
     };
     battle();
   });
   document.getElementById("huwama1-3").addEventListener("click", () => {
     battleinfo = {
-      info: ["スライム", 15, 1, 1, 1, "フワマ平原 1-3", "1", "3", 2, 3],
+      info: ["スライム", 15, 1, 1, 1, "フワマ平原 1-3", 1, 3, 2, 3],
     };
   });
   document.getElementById("huwama1-4").addEventListener("click", () => {
     battleinfo = {
-      info: ["スライム", 15, 2, 7, 1, "フワマ平原 1-4", "1", "4", 1, 4],
+      info: ["スライム", 15, 2, 7, 1, "フワマ平原 1-4", 1, 4, 1, 4],
     };
   });
   document.getElementById("huwama1-5").addEventListener("click", () => {
     battleinfo = {
-      info: ["スライム", 20, 4, 7, 1, "フワマ平原 1-5", "1", "5", 2, 4],
+      info: ["スライム", 20, 4, 7, 1, "フワマ平原 1-5", 1, 5, 2, 4],
     };
   });
   document.getElementById("huwama1-6").addEventListener("click", () => {
     battleinfo = {
-      info: ["スライム", 20, 2, 1, 1, "フワマ平原 1-6", "1", "6", 2, 5],
+      info: ["スライム", 20, 2, 1, 1, "フワマ平原 1-6", 1, 6, 2, 5],
     };
   });
   document.getElementById("huwama1-7").addEventListener("click", () => {
     battleinfo = {
-      info: ["スライム", 20, 1, 1, 1, "フワマ平原 1-7", "1", "7", 2, 6],
+      info: ["スライム", 20, 1, 1, 1, "フワマ平原 1-7", 1, 7, 2, 6],
     };
   });
   document.getElementById("huwama1-8").addEventListener("click", () => {
     battleinfo = {
-      info: ["スライム", 20, 1, 1, 1, "フワマ平原 1-8", "1", "8", 2, 7],
+      info: ["スライム", 20, 1, 1, 1, "フワマ平原 1-8", 1, 8, 2, 7],
     };
   });
   document.getElementById("huwama1-9").addEventListener("click", () => {
     battleinfo = {
-      info: ["スライム", 15, 1, 1, 1, "フワマ平原 1-9", "1", "9", 3, 7],
+      info: ["スライム", 15, 1, 1, 1, "フワマ平原 1-9", 1, 9, 3, 7],
     };
   });
   document.getElementById("huwama1-10").addEventListener("click", () => {
     battleinfo = {
-      info: ["スライム", 15, 5, 1, 1, "フワマ平原 1-10", "1", "10", 4, 10],
+      info: ["スライム", 15, 5, 1, 1, "フワマ平原 1-10", 1, 10, 4, 10],
     };
   });
 }
+
+/**
+ * ヤルシヤオ高原を描画する
+ */
 
 async function yarusiyao() {
   chrome.storage.local.get(["flag"], function (response) {
@@ -233,123 +260,57 @@ async function yarusiyao() {
       stageview(2, 10);
       break;
   }
-  document.getElementById("backpage").addEventListener("click", () => {
+  document.getElementById("backquest").addEventListener("click", () => {
     main();
   });
   document.getElementById("yarusiyao2-1").addEventListener("click", () => {
     battleinfo = {
-      info: [
-        "ギナストワヤ",
-        20,
-        3,
-        14,
-        1,
-        "ヤルシヤオ高原 1-1",
-        "1",
-        "1",
-        5,
-        7,
-      ],
+      info: ["ギナストワヤ", 20, 3, 14, 1, "ヤルシヤオ高原 1-1", 1, 1, 5, 7],
     };
   });
   document.getElementById("yarusiyao2-2").addEventListener("click", () => {
     battleinfo = {
-      info: ["ギナストワヤ", 20, 5, 1, 1, "ヤルシヤオ高原 1-2", "1", "2", 5, 8],
+      info: ["ギナストワヤ", 20, 5, 1, 1, "ヤルシヤオ高原 1-2", 1, 2, 5, 8],
     };
   });
   document.getElementById("yarusiyao2-3").addEventListener("click", () => {
     battleinfo = {
-      info: ["ギナストワヤ", 20, 5, 7, 1, "ヤルシヤオ高原 1-3", "1", "3", 6, 7],
+      info: ["ギナストワヤ", 20, 5, 7, 1, "ヤルシヤオ高原 1-3", 1, 3, 6, 7],
     };
   });
   document.getElementById("yarusiyao2-4").addEventListener("click", () => {
     battleinfo = {
-      info: [
-        "ギナストワヤ",
-        15,
-        2,
-        21,
-        1,
-        "ヤルシヤオ高原 1-4",
-        "1",
-        "4",
-        6,
-        8,
-      ],
+      info: ["ギナストワヤ", 15, 2, 21, 1, "ヤルシヤオ高原 1-4", 1, 4, 6, 8],
     };
   });
   document.getElementById("yarusiyao2-5").addEventListener("click", () => {
     battleinfo = {
-      info: ["ギナストワヤ", 25, 4, 7, 1, "ヤルシヤオ高原 1-5", "1", "5", 6, 9],
+      info: ["ギナストワヤ", 25, 4, 7, 1, "ヤルシヤオ高原 1-5", 1, 5, 6, 9],
     };
   });
   document.getElementById("yarusiyao2-6").addEventListener("click", () => {
     battleinfo = {
-      info: [
-        "ギナストワヤ",
-        30,
-        4,
-        14,
-        1,
-        "ヤルシヤオ高原 1-6",
-        "1",
-        "6",
-        7,
-        8,
-      ],
+      info: ["ギナストワヤ", 30, 4, 14, 1, "ヤルシヤオ高原 1-6", 1, 6, 7, 8],
     };
   });
   document.getElementById("yarusiyao2-7").addEventListener("click", () => {
     battleinfo = {
-      info: ["ギナストワヤ", 35, 3, 7, 1, "ヤルシヤオ高原 1-7", "1", "7", 7, 9],
+      info: ["ギナストワヤ", 35, 3, 7, 1, "ヤルシヤオ高原 1-7", 1, 7, 7, 9],
     };
   });
   document.getElementById("yarusiyao2-8").addEventListener("click", () => {
     battleinfo = {
-      info: [
-        "ギナストワヤ",
-        30,
-        5,
-        14,
-        1,
-        "ヤルシヤオ高原 1-8",
-        "1",
-        "8",
-        8,
-        9,
-      ],
+      info: ["ギナストワヤ", 30, 5, 14, 1, "ヤルシヤオ高原 1-8", 1, 8, 8, 9],
     };
   });
   document.getElementById("yarusiyao2-9").addEventListener("click", () => {
     battleinfo = {
-      info: [
-        "ギナストワヤ",
-        50,
-        5,
-        21,
-        1,
-        "ヤルシヤオ高原 1-9",
-        "1",
-        "9",
-        10,
-        12,
-      ],
+      info: ["ギナストワヤ", 50, 5, 21, 1, "ヤルシヤオ高原 1-9", 1, 9, 10, 12],
     };
   });
   document.getElementById("yarusiyao2-10").addEventListener("click", () => {
     battleinfo = {
-      info: [
-        "ギナストワヤ",
-        15,
-        5,
-        1,
-        1,
-        "ヤルシヤオ高原 1-10",
-        "1",
-        "10",
-        5,
-        12,
-      ],
+      info: ["ギナストワヤ", 15, 5, 1, 1, "ヤルシヤオ高原 1-10", 1, 10, 5, 12],
     };
   });
 }
@@ -367,12 +328,12 @@ setTimeout(() => {
 function battle() {
   innerHTML(
     "screen",
-    `<h2>敵の情報</h2><h3>${battleinfo.info[0]}</h3><div class="box"><div class="statusbox" style="display: flex;justify-content: center;"><p>HP:${battleinfo.info[1]}</p><p>Atk:${battleinfo.info[2]}</p></div><div class="statusbox" style="display: flex;justify-content: center;"><p>Def:${battleinfo.info[3]}</p><p>Spd:${battleinfo.info[4]}</p></div></div><h2>自分の情報</h2><div class="box"><div class="statusbox" style="display: flex;justify-content: center;"><p>HP:${Status.hp}</p><p>ATK:${Status.atk}</p></div><div class="statusbox" style="display: flex;justify-content: center;"><p>DEF:${Status.def}</p><p>SPD:${Status.spd}</p></div></div></div><button id="start">バトルを開始する</button><hr><button id="backpage">クエストページに戻る</button>`
+    `<h2>敵の情報</h2><h3>${battleinfo.info[0]}</h3><div class="box"><div class="statusbox" style="display: flex;justify-content: center;"><p>HP:${battleinfo.info[1]}</p><p>Atk:${battleinfo.info[2]}</p></div><div class="statusbox" style="display: flex;justify-content: center;"><p>Def:${battleinfo.info[3]}</p><p>Spd:${battleinfo.info[4]}</p></div></div><h2>自分の情報</h2><div class="box"><div class="statusbox" style="display: flex;justify-content: center;"><p>HP:${Status.hp}</p><p>ATK:${Status.atk}</p></div><div class="statusbox" style="display: flex;justify-content: center;"><p>DEF:${Status.def}</p><p>SPD:${Status.spd}</p></div></div></div><button id="start">バトルを開始する</button><hr><button id="backquest">クエストページに戻る</button>`
   );
   document.getElementById("mainpage").style.display = "none";
   document.getElementById("hr").style.display = "none";
   document.getElementById("br").style.display = "none";
-  document.getElementById("backpage").addEventListener("click", () => {
+  document.getElementById("backquest").addEventListener("click", () => {
     main();
   });
   document.getElementById("start").addEventListener("click", async function () {
@@ -458,7 +419,7 @@ function battle() {
       });
       innerHTML(
         "screen",
-        `<h1>勝利！</h1><h2>${stageMessage}</h2><h2>${levelUp}</h2><h2>Exp:${ExpRandom}</h2><h2>次のレベルまであと${leftexp}exp</h2><hr><button id="backpage">クエストページに戻る</button>`
+        `<h1>勝利！</h1><h2>${stageMessage}</h2><h2>${levelUp}</h2><h2>Exp:${ExpRandom}</h2><h2>次のレベルまであと${leftexp}exp</h2><hr><button id="backquest">クエストページに戻る</button>`
       );
       document.getElementById("mainpage").style.display = "inline-block";
       document.getElementById("br").style.display = "block";
@@ -468,12 +429,12 @@ function battle() {
       await sleep(2000);
       innerHTML(
         "screen",
-        `<h1>敗北...</h1><button id="retry">再挑戦</button><hr><button id="backpage">クエストページに戻る</button>`
+        `<h1>敗北...</h1><button id="retry">再挑戦</button><hr><button id="backquest">クエストページに戻る</button>`
       );
       document.getElementById("mainpage").style.display = "inline-block";
       document.getElementById("br").style.display = "block";
     }
-    document.getElementById("backpage").addEventListener("click", () => {
+    document.getElementById("backquest").addEventListener("click", () => {
       main();
     });
     document.getElementById("retry").addEventListener("click", () => {
@@ -522,7 +483,8 @@ function pageload(nowenemyHp, nowplayerHp, log) {
 }
 
 /**
- * ステージセレクトの際に必要なものを描画する関数
+ * 親ステージを選択する際に必要なものを描画する関数
+ * @param {最大クリア親ステージ} stageNumber
  */
 function stageselect(stageNumber) {
   stageNumber += 1;
@@ -539,13 +501,16 @@ function stageselect(stageNumber) {
   document.getElementById("hr").style.display = "block";
   document.getElementById("br").style.display = "none";
 }
-
+/**
+ * ステージを表示する関数
+ * @param {親ステージID} stageid
+ * @param {ステージID} stageNumber
+ */
 function stageview(stageid, stageNumber) {
   var stageiD = stageid - 1;
   var stageID = StageIDs.stageID[stageiD];
   var stageName = StageIDs.stageName[stageiD];
   stageNumber += 1;
-  console.log(`${stageID}${stageid}-1`);
   var button = `<button id="${stageID}${stageid}-1"style="margin-bottom: 5px;">${stageName} ${stageid}-1</button>`;
   for (var i = 2; stageNumber > i; i++) {
     button =
@@ -556,7 +521,7 @@ function stageview(stageid, stageNumber) {
     "screen",
     "<h2>ステージを選択してください</h2>" +
       button +
-      `<hr><button id="backpage">クエストページに戻る</button>`
+      `<hr><button id="backquest">クエストページに戻る</button>`
   );
   document.getElementById("mainpage").style.display = "none";
   document.getElementById("hr").style.display = "none";
