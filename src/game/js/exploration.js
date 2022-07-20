@@ -16,6 +16,10 @@ var flag
  */
 var battleinfo = { info: [] }
 
+/**
+ * クリティカル率計算式 = [spd]/1.3=[クリ率]
+ */
+
 /*
 import math
 level = 1
