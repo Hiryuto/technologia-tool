@@ -8,18 +8,13 @@
   "content_scripts": [
     {
       "matches": [
-        "https://player.technologia-schoolofmagic.jp/player/*"
+        "https://player.technologia-schoolofmagic.jp/player/*",
+        "https://register.technologia-schoolofmagic.jp/*"
       ],
-      "js": [
-        "content.js",
-        "jquery-3.6.0.min.js"
-      ]
+      "js": ["content.js", "jquery-3.6.0.min.js"]
     }
   ],
-  "permissions": [
-    "storage",
-    "unlimitedStorage"
-  ],
+  "permissions": ["storage", "unlimitedStorage"],
   "background": {
     "service_worker": "background.js"
   },
@@ -30,7 +25,5 @@
     "default_title": "ショートカットを開く",
     "default_popup": "popup.html"
   },
-  "host_permissions": [
-    "<all_urls>"
-  ]
+  "host_permissions": ["<all_urls>"]
 }
